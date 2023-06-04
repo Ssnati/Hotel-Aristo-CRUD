@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mariadb://localhost:3306/pb_hotel_aristo_v1</property>
+    <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
+    <property name="connection.username">root</property>
+    <mapping class="org.example.PersonasEntity"/>
+    <mapping class="pojo.ContactosEmergenciaHuespedesEntity"/>
+    <mapping class="pojo.EmpresasEntity"/>
+    <mapping class="pojo.LugaresEntity"/>
+    <mapping class="pojo.OrdenesServicioEntity"/>
+    <mapping class="pojo.ParentescosEntity"/>
+    <mapping class="pojo.PersonasEntity"/>
+    <mapping class="pojo.ReservasEntity"/>
+    <mapping class="pojo.ServiciosUsadosEntity"/>
+
+  </session-factory>
+</hibernate-configuration>
