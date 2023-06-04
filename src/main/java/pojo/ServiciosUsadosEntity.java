@@ -5,13 +5,20 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "servicios_usados", schema = "pb_hotel_aristo_v1", catalog = "")
-@IdClass(pojo.ServiciosUsadosEntityPK.class)
+@Table(name = "servicios_usados", schema = "pb_hotel_aristo_v1", catalog = "")
+@IdClass(ServiciosUsadosEntityPK.class)
 public class ServiciosUsadosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_servicio")
+    @Column(name = "id_servicio")
     private int idServicio;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id_reserva")
+    private int idReserva;
+    @Basic
+    @Column(name = "precio_servicio")
+    private int precioServicio;
 
     public int getIdServicio() {
         return idServicio;
@@ -21,11 +28,6 @@ public class ServiciosUsadosEntity {
         this.idServicio = idServicio;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @jakarta.persistence.Column(name = "id_reserva")
-    private int idReserva;
-
     public int getIdReserva() {
         return idReserva;
     }
@@ -33,10 +35,6 @@ public class ServiciosUsadosEntity {
     public void setIdReserva(int idReserva) {
         this.idReserva = idReserva;
     }
-
-    @Basic
-    @Column(name = "precio_servicio")
-    private int precioServicio;
 
     public int getPrecioServicio() {
         return precioServicio;

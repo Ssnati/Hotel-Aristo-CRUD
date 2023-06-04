@@ -5,12 +5,21 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "contactos_emergencia_huespedes", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "contactos_emergencia_huespedes", schema = "pb_hotel_aristo_v1", catalog = "")
 public class ContactosEmergenciaHuespedesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_contacto_emergencia")
+    @Column(name = "id_contacto_emergencia")
     private int idContactoEmergencia;
+    @Basic
+    @Column(name = "id_persona")
+    private int idPersona;
+    @Basic
+    @Column(name = "id_parentesco")
+    private int idParentesco;
+    @Basic
+    @Column(name = "numero_emergencia")
+    private String numeroEmergencia;
 
     public int getIdContactoEmergencia() {
         return idContactoEmergencia;
@@ -20,10 +29,6 @@ public class ContactosEmergenciaHuespedesEntity {
         this.idContactoEmergencia = idContactoEmergencia;
     }
 
-    @Basic
-    @Column(name = "id_persona")
-    private int idPersona;
-
     public int getIdPersona() {
         return idPersona;
     }
@@ -32,10 +37,6 @@ public class ContactosEmergenciaHuespedesEntity {
         this.idPersona = idPersona;
     }
 
-    @Basic
-    @Column(name = "id_parentesco")
-    private int idParentesco;
-
     public int getIdParentesco() {
         return idParentesco;
     }
@@ -43,10 +44,6 @@ public class ContactosEmergenciaHuespedesEntity {
     public void setIdParentesco(int idParentesco) {
         this.idParentesco = idParentesco;
     }
-
-    @Basic
-    @Column(name = "numero_emergencia")
-    private String numeroEmergencia;
 
     public String getNumeroEmergencia() {
         return numeroEmergencia;

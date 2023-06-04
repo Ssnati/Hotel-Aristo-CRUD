@@ -5,12 +5,15 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "parentescos", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "parentescos", schema = "pb_hotel_aristo_v1", catalog = "")
 public class ParentescosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_parentesco")
+    @Column(name = "id_parentesco")
     private int idParentesco;
+    @Basic
+    @Column(name = "nombre_parentesco")
+    private String nombreParentesco;
 
     public int getIdParentesco() {
         return idParentesco;
@@ -19,10 +22,6 @@ public class ParentescosEntity {
     public void setIdParentesco(int idParentesco) {
         this.idParentesco = idParentesco;
     }
-
-    @Basic
-    @Column(name = "nombre_parentesco")
-    private String nombreParentesco;
 
     public String getNombreParentesco() {
         return nombreParentesco;

@@ -6,12 +6,36 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "personas", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "personas", schema = "pb_hotel_aristo_v1", catalog = "")
 public class PersonasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_persona")
+    @Column(name = "id_persona")
     private int idPersona;
+    @Basic
+    @Column(name = "id_tipo_documento")
+    private int idTipoDocumento;
+    @Basic
+    @Column(name = "id_lugar_expedicion_documento")
+    private int idLugarExpedicionDocumento;
+    @Basic
+    @Column(name = "id_lugar_nacimiento")
+    private int idLugarNacimiento;
+    @Basic
+    @Column(name = "nombre_persona")
+    private String nombrePersona;
+    @Basic
+    @Column(name = "numero_telefono")
+    private String numeroTelefono;
+    @Basic
+    @Column(name = "numero_documento")
+    private int numeroDocumento;
+    @Basic
+    @Column(name = "fecha_expedicion_documento")
+    private Date fechaExpedicionDocumento;
+    @Basic
+    @Column(name = "fecha_nacimiento")
+    private Date fechaNacimiento;
 
     public int getIdPersona() {
         return idPersona;
@@ -21,10 +45,6 @@ public class PersonasEntity {
         this.idPersona = idPersona;
     }
 
-    @Basic
-    @Column(name = "id_tipo_documento")
-    private int idTipoDocumento;
-
     public int getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -32,10 +52,6 @@ public class PersonasEntity {
     public void setIdTipoDocumento(int idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
-
-    @Basic
-    @Column(name = "id_lugar_expedicion_documento")
-    private int idLugarExpedicionDocumento;
 
     public int getIdLugarExpedicionDocumento() {
         return idLugarExpedicionDocumento;
@@ -45,10 +61,6 @@ public class PersonasEntity {
         this.idLugarExpedicionDocumento = idLugarExpedicionDocumento;
     }
 
-    @Basic
-    @Column(name = "id_lugar_nacimiento")
-    private int idLugarNacimiento;
-
     public int getIdLugarNacimiento() {
         return idLugarNacimiento;
     }
@@ -56,10 +68,6 @@ public class PersonasEntity {
     public void setIdLugarNacimiento(int idLugarNacimiento) {
         this.idLugarNacimiento = idLugarNacimiento;
     }
-
-    @Basic
-    @Column(name = "nombre_persona")
-    private String nombrePersona;
 
     public String getNombrePersona() {
         return nombrePersona;
@@ -69,10 +77,6 @@ public class PersonasEntity {
         this.nombrePersona = nombrePersona;
     }
 
-    @Basic
-    @Column(name = "numero_telefono")
-    private String numeroTelefono;
-
     public String getNumeroTelefono() {
         return numeroTelefono;
     }
@@ -80,10 +84,6 @@ public class PersonasEntity {
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
     }
-
-    @Basic
-    @Column(name = "numero_documento")
-    private int numeroDocumento;
 
     public int getNumeroDocumento() {
         return numeroDocumento;
@@ -93,10 +93,6 @@ public class PersonasEntity {
         this.numeroDocumento = numeroDocumento;
     }
 
-    @Basic
-    @Column(name = "fecha_expedicion_documento")
-    private Date fechaExpedicionDocumento;
-
     public Date getFechaExpedicionDocumento() {
         return fechaExpedicionDocumento;
     }
@@ -104,10 +100,6 @@ public class PersonasEntity {
     public void setFechaExpedicionDocumento(Date fechaExpedicionDocumento) {
         this.fechaExpedicionDocumento = fechaExpedicionDocumento;
     }
-
-    @Basic
-    @Column(name = "fecha_nacimiento")
-    private Date fechaNacimiento;
 
     public Date getFechaNacimiento() {
         return fechaNacimiento;

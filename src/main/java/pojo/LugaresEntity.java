@@ -5,12 +5,21 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "lugares", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "lugares", schema = "pb_hotel_aristo_v1", catalog = "")
 public class LugaresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_lugar")
+    @Column(name = "id_lugar")
     private int idLugar;
+    @Basic
+    @Column(name = "nombre_lugar")
+    private String nombreLugar;
+    @Basic
+    @Column(name = "tipo_lugar")
+    private String tipoLugar;
+    @Basic
+    @Column(name = "id_lugar_ubicacion")
+    private Integer idLugarUbicacion;
 
     public int getIdLugar() {
         return idLugar;
@@ -20,10 +29,6 @@ public class LugaresEntity {
         this.idLugar = idLugar;
     }
 
-    @Basic
-    @Column(name = "nombre_lugar")
-    private String nombreLugar;
-
     public String getNombreLugar() {
         return nombreLugar;
     }
@@ -32,10 +37,6 @@ public class LugaresEntity {
         this.nombreLugar = nombreLugar;
     }
 
-    @Basic
-    @Column(name = "tipo_lugar")
-    private String tipoLugar;
-
     public String getTipoLugar() {
         return tipoLugar;
     }
@@ -43,10 +44,6 @@ public class LugaresEntity {
     public void setTipoLugar(String tipoLugar) {
         this.tipoLugar = tipoLugar;
     }
-
-    @Basic
-    @Column(name = "id_lugar_ubicacion")
-    private Integer idLugarUbicacion;
 
     public Integer getIdLugarUbicacion() {
         return idLugarUbicacion;

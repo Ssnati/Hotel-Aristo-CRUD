@@ -5,12 +5,24 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "empresas", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "empresas", schema = "pb_hotel_aristo_v1", catalog = "")
 public class EmpresasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "id_empresa")
+    @Column(name = "id_empresa")
     private int idEmpresa;
+    @Basic
+    @Column(name = "nit_empresa")
+    private int nitEmpresa;
+    @Basic
+    @Column(name = "nombre_empresa")
+    private String nombreEmpresa;
+    @Basic
+    @Column(name = "telefono_empresa")
+    private String telefonoEmpresa;
+    @Basic
+    @Column(name = "correo_empresa")
+    private String correoEmpresa;
 
     public int getIdEmpresa() {
         return idEmpresa;
@@ -20,10 +32,6 @@ public class EmpresasEntity {
         this.idEmpresa = idEmpresa;
     }
 
-    @Basic
-    @Column(name = "nit_empresa")
-    private int nitEmpresa;
-
     public int getNitEmpresa() {
         return nitEmpresa;
     }
@@ -31,10 +39,6 @@ public class EmpresasEntity {
     public void setNitEmpresa(int nitEmpresa) {
         this.nitEmpresa = nitEmpresa;
     }
-
-    @Basic
-    @Column(name = "nombre_empresa")
-    private String nombreEmpresa;
 
     public String getNombreEmpresa() {
         return nombreEmpresa;
@@ -44,10 +48,6 @@ public class EmpresasEntity {
         this.nombreEmpresa = nombreEmpresa;
     }
 
-    @Basic
-    @Column(name = "telefono_empresa")
-    private String telefonoEmpresa;
-
     public String getTelefonoEmpresa() {
         return telefonoEmpresa;
     }
@@ -55,10 +55,6 @@ public class EmpresasEntity {
     public void setTelefonoEmpresa(String telefonoEmpresa) {
         this.telefonoEmpresa = telefonoEmpresa;
     }
-
-    @Basic
-    @Column(name = "correo_empresa")
-    private String correoEmpresa;
 
     public String getCorreoEmpresa() {
         return correoEmpresa;

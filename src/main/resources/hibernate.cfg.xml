@@ -7,7 +7,7 @@
     <property name="connection.url">jdbc:mariadb://localhost:3306/pb_hotel_aristo_v1</property>
     <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
     <property name="connection.username">root</property>
-    <mapping class="org.example.PersonasEntity"/>
+      <mapping class="pojo.PersonasEntity"/>
     <mapping class="pojo.ContactosEmergenciaHuespedesEntity"/>
     <mapping class="pojo.EmpresasEntity"/>
     <mapping class="pojo.LugaresEntity"/>
@@ -16,6 +16,9 @@
     <mapping class="pojo.PersonasEntity"/>
     <mapping class="pojo.ReservasEntity"/>
     <mapping class="pojo.ServiciosUsadosEntity"/>
+      <mapping class="pojo.TiposAcomodacionEntity"/>
+      <mapping class="pojo.TiposDocumentosEntity"/>
+      <mapping class="pojo.TiposServicioEntity"/>
 
   </session-factory>
 </hibernate-configuration>

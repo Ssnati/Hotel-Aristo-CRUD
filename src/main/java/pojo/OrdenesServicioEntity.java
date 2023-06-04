@@ -6,12 +6,18 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.Table(name = "ordenes_servicio", schema = "pb_hotel_aristo_v1", catalog = "")
+@Table(name = "ordenes_servicio", schema = "pb_hotel_aristo_v1", catalog = "")
 public class OrdenesServicioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "numero_orden")
+    @Column(name = "numero_orden")
     private int numeroOrden;
+    @Basic
+    @Column(name = "id_reserva")
+    private int idReserva;
+    @Basic
+    @Column(name = "fecha_orden")
+    private Date fechaOrden;
 
     public int getNumeroOrden() {
         return numeroOrden;
@@ -21,10 +27,6 @@ public class OrdenesServicioEntity {
         this.numeroOrden = numeroOrden;
     }
 
-    @Basic
-    @Column(name = "id_reserva")
-    private int idReserva;
-
     public int getIdReserva() {
         return idReserva;
     }
@@ -32,10 +34,6 @@ public class OrdenesServicioEntity {
     public void setIdReserva(int idReserva) {
         this.idReserva = idReserva;
     }
-
-    @Basic
-    @Column(name = "fecha_orden")
-    private Date fechaOrden;
 
     public Date getFechaOrden() {
         return fechaOrden;
