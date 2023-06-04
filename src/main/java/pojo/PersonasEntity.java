@@ -121,4 +121,19 @@ public class PersonasEntity {
     public int hashCode() {
         return Objects.hash(idPersona, idTipoDocumento, idLugarExpedicionDocumento, idLugarNacimiento, nombrePersona, numeroTelefono, numeroDocumento, fechaExpedicionDocumento, fechaNacimiento);
     }
+
+    @Override
+    public String toString() {
+        return "PersonasEntity{" +
+                "idPersona=" + idPersona +
+                ", idTipoDocumento=" + idTipoDocumento +
+                ", idLugarExpedicionDocumento=" + idLugarExpedicionDocumento +
+                ", idLugarNacimiento=" + idLugarNacimiento +
+                ", nombrePersona='" + nombrePersona + '\'' +
+                ", numeroTelefono='" + numeroTelefono + '\'' +
+                ", numeroDocumento=" + numeroDocumento +
+                ", fechaExpedicionDocumento=" + fechaExpedicionDocumento +
+                ", fechaNacimiento=" + fechaNacimiento +
+                '}';
+    }
 }

@@ -5,22 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46f0f81-df85-4e1c-8f1c-a5b1d1866f23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/TiposAcomodacionEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/TiposDocumentosEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/TiposServicioEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/BDManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/DatePickerPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/LongTextRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ContactosEmergenciaHuespedesEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ContactosEmergenciaHuespedesEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/LugaresEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/LugaresEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/OrdenesServicioEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/OrdenesServicioEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ParentescosEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ParentescosEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pojo/PersonasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/PersonasEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ServiciosUsadosEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ServiciosUsadosEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ServiciosUsadosEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ServiciosUsadosEntityPK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +49,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "last_directory_selection": "C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/org/example",
+    "last_opened_file_path": "C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/view",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +68,12 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="view" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ADMIN\Documents\Intellj Project\5 Semestre\Proyecto Bases\Copia-proyecto\src\main\java\view" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ADMIN\Documents\Intellj Project\5 Semestre\Proyecto Bases\Copia-proyecto\src\main\resources" />
       <recent name="C:\Users\ADMIN\Documents\Intellj Project\5 Semestre\Proyecto Bases\Copia-proyecto" />
@@ -113,7 +116,7 @@
       <updated>1685861201534</updated>
       <workItem from="1685861202536" duration="137000" />
       <workItem from="1685861629149" duration="2704000" />
-      <workItem from="1685864356984" duration="7111000" />
+      <workItem from="1685864356984" duration="17905000" />
     </task>
     <servers />
   </component>
