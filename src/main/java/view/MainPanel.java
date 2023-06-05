@@ -12,7 +12,7 @@ public class MainPanel extends JPanel {
     private JTabbedPane tabbedPaneReservations;
     private AddReservationsPanel addAddReservationsPanel;
     private EditReservationsPanel editReservationsPanel;
-    private PanelReservationsRead showPanelReservations;
+    private PanelReservationsRead panelReservationsRead;
 
     public MainPanel(ActionListener actionListener, ChangeListener changeListener) {
         this.actionListener = actionListener;
@@ -43,12 +43,12 @@ public class MainPanel extends JPanel {
     private void initComponents() {
         addAddReservationsPanel = new AddReservationsPanel(actionListener);
         editReservationsPanel = new EditReservationsPanel(actionListener);
-        showPanelReservations = new PanelReservationsRead(actionListener);
+        panelReservationsRead = new PanelReservationsRead(actionListener);
         tabbedPane = new JTabbedPane();
         tabbedPaneReservations = new JTabbedPane(SwingConstants.LEFT);
 
         tabbedPaneReservations.addTab("C", addAddReservationsPanel);
-        tabbedPaneReservations.addTab("R y D", showPanelReservations);
+        tabbedPaneReservations.addTab("R y D", panelReservationsRead);
         tabbedPaneReservations.addTab("U", editReservationsPanel);
         tabbedPane.addTab("Reservas", tabbedPaneReservations);
         add(tabbedPane);
@@ -86,11 +86,12 @@ public class MainPanel extends JPanel {
         this.editReservationsPanel = editReservationsPanel;
     }
 
-    public PanelReservationsRead getShowPanelReservations() {
-        return showPanelReservations;
+    public PanelReservationsRead getPanelReservationsRead() {
+        return panelReservationsRead;
     }
 
-    public void setShowPanelReservations(PanelReservationsRead showPanelReservations) {
-        this.showPanelReservations = showPanelReservations;
+    public void setPanelReservationsRead(PanelReservationsRead panelReservationsRead) {
+        this.panelReservationsRead = panelReservationsRead;
     }
+
 }

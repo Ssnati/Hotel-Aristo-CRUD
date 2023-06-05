@@ -1,10 +1,6 @@
 package presenter;
 
 import model.BDManager;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import pojo.PersonasEntity;
 import pojo.ReservasEntity;
 import pojo.ReserveFullData;
 import view.View;
@@ -83,70 +79,30 @@ public class Presenter implements ActionListener, ChangeListener, WindowListener
                 model.save(entity2);
                 view.getMainPanel().getTabbedPaneReservations().setSelectedIndex(1);
             }
-            case "deleteReservation" -> {
-                String data = view.showDialog("Ingrese el ID de la reserva a eliminar");
-                if (data != null && !data.isEmpty()){
-                    model.delete(Integer.parseInt(data));
-                }
-                view.getMainPanel().getTabbedPaneReservations().setSelectedIndex(1);
-            }
-        }
-    }
-
-    public void read() {
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            PersonasEntity persona = session.get(PersonasEntity.class, 1);
-            List<PersonasEntity> personas = new ArrayList<>();
-            personas.add(searchPersonByDocumentNumber(session, 1));
-            for (PersonasEntity p : personas) {
-                System.out.println(p);
-            }
-        }
-    }
-
-    private PersonasEntity searchPersonByDocumentNumber(Session session, int i) {
-        PersonasEntity persona = session.get(PersonasEntity.class, i);
-        return persona;
-    }
-
-    public void delete() {
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            PersonasEntity persona = session.get(PersonasEntity.class, 1);
-            session.remove(persona);
-
-            session.getTransaction().commit();
-        }
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        int index = view.getMainPanel().getTabbedPaneReservations().getSelectedIndex();
-        switch (index) {
-            case 2 -> {
-                String data = view.showDialog("Ingrese el ID de la reserva a editar");
-                if (data == null || data.isEmpty()) {
-                    view.getMainPanel().getTabbedPaneReservations().setSelectedIndex(1);
+            case "search" -> {
+                String name = view.getMainPanel().getPanelReservationsRead().getSearchTextField().getText();
+                if (name == null || name.isEmpty()) {
+                    view.getMainPanel().getPanelReservationsRead().loadData(adaptToView(model.getReservas()));
                 } else {
-                    view.loadEditReserve(adaptToView(List.of(model.getReservasById(Integer.parseInt(data)))).get(0));
+                    if (name.matches("[0-9]+")) {
+                        view.loadData(adaptToView(List.of(model.getReservasById(Integer.parseInt(name)))), model.getPersonas(), model.getTiposAcomodacion(), model.getEmpresas());
+                    } else {
+                        view.loadData(adaptToView((model.getReservasByName(name))), model.getPersonas(), model.getTiposAcomodacion(), model.getEmpresas());
+                    }
                 }
             }
-            case 1, 0 -> view.getMainPanel().getShowPanelReservations().loadData(adaptToView(model.getReservas()));
+            case "delete" -> {
+                if (view.getMainPanel().getPanelReservationsRead().getReservationsTable().getSelectedRow() == -1) {
+                    view.showMessage("Seleccione una reserva");
+                } else {
+                    String information = String.valueOf(view.getMainPanel().getPanelReservationsRead().getReservationsTable().getValueAt(view.getMainPanel().getPanelReservationsRead().getReservationsTable().getSelectedRow(), 0));
+                    if (information != null && !information.isEmpty()) {
+                        model.delete(Integer.parseInt(information));
+                        view.getMainPanel().getPanelReservationsRead().loadData(adaptToView(model.getReservas()));
+                    }
+                }
+            }
         }
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-
     }
 
     @Override
@@ -178,5 +134,26 @@ public class Presenter implements ActionListener, ChangeListener, WindowListener
     @Override
     public void windowDeactivated(WindowEvent e) {
 
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        int index = view.getMainPanel().getTabbedPaneReservations().getSelectedIndex();
+        switch (index) {
+            case 2 -> {
+                String data = view.showDialog("Ingrese el ID de la reserva a editar");
+                if (data == null || data.isEmpty()) {
+                    view.getMainPanel().getTabbedPaneReservations().setSelectedIndex(1);
+                } else {
+                    view.loadEditReserve(adaptToView(List.of(model.getReservasById(Integer.parseInt(data)))).get(0));
+                }
+            }
+            case 1, 0 -> view.getMainPanel().getPanelReservationsRead().loadData(adaptToView(model.getReservas()));
+        }
     }
 }

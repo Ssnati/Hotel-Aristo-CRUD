@@ -1,6 +1,5 @@
 package view;
 
-import pojo.ReservasEntity;
 import pojo.ReserveFullData;
 
 import javax.swing.*;
@@ -9,25 +8,34 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class PanelReservationsRead extends JPanel {
+    private final ActionListener actionListener;
     private JLabel titleLabel;
     private JTextField searchTextField;
     private JButton searchButton;
     private JTable reservationsTable;
-    private List<ReservasEntity> reservations;
+    private JButton deleteButton;
 
     public PanelReservationsRead(ActionListener actionListener) {
+        this.actionListener = actionListener;
         setLayout(new GridBagLayout());
         setBackground(new Color(61, 41, 110));
         setPreferredSize(new Dimension(1000, 500));
         initComponents();
-        fillReservationsTable();
         tableEvents();
+        searchEvents();
+    }
+
+    private void searchEvents() {
+        searchButton.addActionListener(actionListener);
+        searchTextField.addActionListener(actionListener);
+        searchButton.setActionCommand("search");
+        searchTextField.setActionCommand("search");
+        deleteButton.addActionListener(actionListener);
+        deleteButton.setActionCommand("delete");
     }
 
     private void initComponents() {
@@ -35,6 +43,7 @@ public class PanelReservationsRead extends JPanel {
         searchTextField = new JTextField(20);
         searchButton = new JButton("Buscar");
         reservationsTable = new JTable();
+        deleteButton = new JButton("Eliminar");
         performTableSettings();
 
         addComponents();
@@ -52,35 +61,6 @@ public class PanelReservationsRead extends JPanel {
                 }
             }
         });
-    }
-
-    private void fillReservationsTable() {
-        reservations = new ArrayList<>();
-        for (int i = 0; i < 150; i++) {
-            ReservasEntity reserva = new ReservasEntity();
-            reserva.setIdReserva(i);
-            reserva.setFechaReserva(Date.valueOf("2021-05-05"));
-            reserva.setValorReserva(100000);
-            reserva.setIdEmpresa(1);
-            reserva.setIdPersonaHuesped(1);
-            reserva.setIdTipoAcomodacion(1);
-            reserva.setIdPersonaRecepcionista(1);
-            reserva.setObservacionesHuespedHotel(i == 0 ? "Comentario 1234567890 lfaksjdlfjalks ajsdfljasl" : "Lore ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget aliquam aliquam, nisl nisl aliquet nisl, quis aliquam nisl nisl eget nisl.");
-            reservations.add(reserva);
-        }
-        for (int i = 0; i < reservations.size() - 1; i++) {
-            ReservasEntity reserve = reservations.get(i);
-            ((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[]{
-                    reserve.getIdReserva(),
-                    reserve.getFechaReserva(),
-                    reserve.getValorReserva(),
-                    reserve.getIdEmpresa(),
-                    reserve.getIdPersonaHuesped(),
-                    reserve.getIdTipoAcomodacion(),
-                    reserve.getIdPersonaRecepcionista(),
-                    reserve.getObservacionesHuespedHotel()
-            });
-        }
     }
 
     private void showLongTextDialog(String longText) {
@@ -117,6 +97,7 @@ public class PanelReservationsRead extends JPanel {
         addSearchButton();
         addSearchTextField();
         addReservationsTable();
+        addDeleteButton();
     }
 
     private void addTitleLabel() {
@@ -171,6 +152,19 @@ public class PanelReservationsRead extends JPanel {
         add(scrollPane, gbc);
     }
 
+    private void addDeleteButton() {
+        deleteButton.setPreferredSize(new Dimension(100, 30));
+        deleteButton.setFont(new Font("Arial", Font.BOLD, 15));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        add(deleteButton, gbc);
+    }
+
     public void loadData(List<ReserveFullData> reservas) {
         ((DefaultTableModel) reservationsTable.getModel()).setRowCount(0);
         for (ReserveFullData reserva : reservas) {
@@ -185,5 +179,45 @@ public class PanelReservationsRead extends JPanel {
                     reserva.getReserveObservations()
             });
         }
+    }
+
+    public JLabel getTitleLabel() {
+        return titleLabel;
+    }
+
+    public void setTitleLabel(JLabel titleLabel) {
+        this.titleLabel = titleLabel;
+    }
+
+    public JTextField getSearchTextField() {
+        return searchTextField;
+    }
+
+    public void setSearchTextField(JTextField searchTextField) {
+        this.searchTextField = searchTextField;
+    }
+
+    public JButton getSearchButton() {
+        return searchButton;
+    }
+
+    public void setSearchButton(JButton searchButton) {
+        this.searchButton = searchButton;
+    }
+
+    public JTable getReservationsTable() {
+        return reservationsTable;
+    }
+
+    public void setReservationsTable(JTable reservationsTable) {
+        this.reservationsTable = reservationsTable;
+    }
+
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(JButton deleteButton) {
+        this.deleteButton = deleteButton;
     }
 }

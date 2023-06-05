@@ -25,7 +25,7 @@ public class BDManager {
         empresas = new ArrayList<>();
     }
 
-    public void loadData(){
+    public void loadData() {
         SessionFactory sessionLocal = configuration.buildSessionFactory();
         reservas = sessionLocal.openSession().createQuery("from ReservasEntity ").list();
         personas = sessionLocal.openSession().createQuery("from PersonasEntity ").list();
@@ -96,6 +96,7 @@ public class BDManager {
         }
         return null;
     }
+
     public void update(ReservasEntity reserveToUpdate) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -117,7 +118,7 @@ public class BDManager {
         }
     }
 
-    public void delete(int idReserva){
+    public void delete(int idReserva) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             ReservasEntity reserva = getReservasById(idReserva);
@@ -163,5 +164,15 @@ public class BDManager {
 
     public void setEmpresas(List<EmpresasEntity> empresas) {
         this.empresas = empresas;
+    }
+
+    public List<ReservasEntity> getReservasByName(String name) {
+        List<ReservasEntity> reservasByName = new ArrayList<>();
+        for (ReservasEntity reserva : reservas) {
+            if (getPersonaById(reserva.getIdPersonaHuesped()).getNombrePersona().toLowerCase().contains(name.toLowerCase())) {
+                reservasByName.add(reserva);
+            }
+        }
+        return reservasByName;
     }
 }

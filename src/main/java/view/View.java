@@ -27,7 +27,7 @@ public class View extends JFrame {
     public void loadData(List<ReserveFullData> reservas, List<PersonasEntity> personas, List<TiposAcomodacionEntity> tiposAcomodacion, List<EmpresasEntity> empresas) {
         mainPanel.getAddPanelReservations().loadData(personas, tiposAcomodacion, empresas);
         mainPanel.getEditReservationsPanel().loadData(personas, tiposAcomodacion, empresas);
-        mainPanel.getShowPanelReservations().loadData(reservas);
+        mainPanel.getPanelReservationsRead().loadData(reservas);
     }
 
     public MainPanel getMainPanel() {
@@ -52,5 +52,9 @@ public class View extends JFrame {
 
     public List<ReserveFullData> getNewReserve() {
         return List.of(mainPanel.getAddPanelReservations().getNewReserve());
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 }
