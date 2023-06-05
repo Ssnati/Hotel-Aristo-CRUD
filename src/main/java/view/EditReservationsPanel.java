@@ -1,12 +1,11 @@
 package view;
 
-import pojo.EmpresasEntity;
-import pojo.PersonasEntity;
-import pojo.TiposAcomodacionEntity;
+import pojo.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.text.NumberFormat;
 import java.util.Currency;
 import java.util.List;
@@ -30,6 +29,7 @@ public class EditReservationsPanel extends JPanel {
     private JButton saveButton;
     private final int COMPONENT_WIDTH = 212;
     private final int COMPONENT_HEIGHT = 35;
+    private ReserveFullData editReserve;
 
     public EditReservationsPanel(ActionListener actionListener) {
         this.actionListener = actionListener;
@@ -42,6 +42,7 @@ public class EditReservationsPanel extends JPanel {
 
     private void tempEvent() {
         saveButton.addActionListener(actionListener);
+        saveButton.setActionCommand("saveEditReservation");
     }
 
     private void initComponents() {
@@ -119,7 +120,7 @@ public class EditReservationsPanel extends JPanel {
 
     private void addReservationValueTextField() {
         textFieldsProperties(reservationValueTextField);
-        reservationValueTextField.setEnabled(false);
+        reservationValueTextField.setForeground(Color.black);
         GridBagConstraints gbc = createConstraints(1, 2, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
         add(reservationValueTextField, gbc);
     }
@@ -233,5 +234,28 @@ public class EditReservationsPanel extends JPanel {
         for (EmpresasEntity empresa : empresas) {
             idEnterpriseComboBox.addItem(empresa.getNombreEmpresa());
         }
+    }
+
+    public void loadEditReserve(ReserveFullData reserve) {
+        editReserve = reserve;
+        idGuestComboBox.setSelectedItem(reserve.getGuestName());
+        idEnterpriseComboBox.setSelectedItem(reserve.getBookingCompanyName());
+        idAccomodationTypeComboBox.setSelectedItem(reserve.getAcomodateTypeName());
+        idRecepcionistComboBox.setSelectedItem(reserve.getReceptionistName());
+        guestCommentsTextArea.setText(reserve.getReserveObservations());
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        formatter.setCurrency(Currency.getInstance("COP"));
+        reservationValueTextField.setText(formatter.format(reserve.getReserveValue()));
+        reservationDatePickerPanel.setDate(reserve.getReserveDate());
+    }
+
+    public ReserveFullData getReserveToEdit() {
+        editReserve.setGuestName(idGuestComboBox.getSelectedItem().toString());
+        editReserve.setBookingCompanyName(idEnterpriseComboBox.getSelectedItem().toString());
+        editReserve.setAcomodateTypeName(idAccomodationTypeComboBox.getSelectedItem().toString().split("<br>")[1].trim());
+        editReserve.setReceptionistName(idRecepcionistComboBox.getSelectedItem().toString());
+        editReserve.setReserveObservations(guestCommentsTextArea.getText());
+        editReserve.setReserveDate(Date.valueOf(reservationDatePickerPanel.getLocalDate()));
+        return editReserve;
     }
 }

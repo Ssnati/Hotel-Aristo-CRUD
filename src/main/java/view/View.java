@@ -3,23 +3,24 @@ package view;
 import pojo.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 public class View extends JFrame {
     private MainPanel mainPanel;
 
-    public View(ActionListener actionListener) {
+    public View(ActionListener actionListener, ChangeListener changeListener) {
         super("Base de datos Hotel Aristo");
         setSize(1100, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        initComponents(actionListener);
+        initComponents(actionListener, changeListener);
     }
 
-    private void initComponents(ActionListener actionListener) {
-        mainPanel = new MainPanel(actionListener);
+    private void initComponents(ActionListener actionListener, ChangeListener changeListener) {
+        mainPanel = new MainPanel(actionListener, changeListener);
         add(mainPanel);
     }
 
@@ -35,5 +36,21 @@ public class View extends JFrame {
 
     public void setMainPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
+    }
+
+    public String showDialog(String message) {
+        return JOptionPane.showInputDialog(this, message);
+    }
+
+    public void loadEditReserve(ReserveFullData reserve) {
+        mainPanel.getEditReservationsPanel().loadEditReserve(reserve);
+    }
+
+    public List<ReserveFullData> getReserveToEdit() {
+        return List.of(mainPanel.getEditReservationsPanel().getReserveToEdit());
+    }
+
+    public List<ReserveFullData> getNewReserve() {
+        return List.of(mainPanel.getAddPanelReservations().getNewReserve());
     }
 }

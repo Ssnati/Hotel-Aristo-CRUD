@@ -1,19 +1,22 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MainPanel extends JPanel {
     private final ActionListener actionListener;
+    private final ChangeListener changeListener;
     private JTabbedPane tabbedPane;
     private JTabbedPane tabbedPaneReservations;
     private AddReservationsPanel addAddReservationsPanel;
     private EditReservationsPanel editReservationsPanel;
     private PanelReservationsRead showPanelReservations;
 
-    public MainPanel(ActionListener actionListener) {
+    public MainPanel(ActionListener actionListener, ChangeListener changeListener) {
         this.actionListener = actionListener;
+        this.changeListener = changeListener;
         setBackground(Color.black);
         initComponents();
         temporalEvents();
@@ -28,6 +31,7 @@ public class MainPanel extends JPanel {
         tabbedPaneReservations.setBackground(addAddReservationsPanel.getBackground());
         tabbedPaneReservations.setForeground(Color.white);
         tabbedPaneReservations.setForegroundAt(tabbedPaneReservations.getSelectedIndex(), Color.black);
+        tabbedPaneReservations.addChangeListener(changeListener);
         tabbedPaneReservations.addChangeListener(e -> {
             tabbedPaneReservations.setForegroundAt(0, Color.white);
             tabbedPaneReservations.setForegroundAt(1, Color.white);

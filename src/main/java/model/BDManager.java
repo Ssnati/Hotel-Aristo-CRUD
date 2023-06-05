@@ -1,5 +1,6 @@
 package model;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import pojo.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class BDManager {
     private Configuration configuration;
+    private SessionFactory sessionFactory;
     private List<ReservasEntity> reservas;
     private List<PersonasEntity> personas;
     private List<TiposAcomodacionEntity> tiposAcomodacion;
@@ -16,6 +18,7 @@ public class BDManager {
     public BDManager() {
         configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
+        sessionFactory = configuration.buildSessionFactory();
         reservas = new ArrayList<>();
         personas = new ArrayList<>();
         tiposAcomodacion = new ArrayList<>();
@@ -23,44 +26,12 @@ public class BDManager {
     }
 
     public void loadData(){
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        reservas = sessionFactory.openSession().createQuery("from ReservasEntity ").list();
-        personas = sessionFactory.openSession().createQuery("from PersonasEntity ").list();
-        tiposAcomodacion = sessionFactory.openSession().createQuery("from TiposAcomodacionEntity ").list();
-        empresas = sessionFactory.openSession().createQuery("from EmpresasEntity ").list();
-        sessionFactory.close();
-    }
-
-    public List<ReservasEntity> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<ReservasEntity> reservas) {
-        this.reservas = reservas;
-    }
-
-    public List<PersonasEntity> getPersonas() {
-        return personas;
-    }
-
-    public void setPersonas(List<PersonasEntity> personas) {
-        this.personas = personas;
-    }
-
-    public List<TiposAcomodacionEntity> getTiposAcomodacion() {
-        return tiposAcomodacion;
-    }
-
-    public void setTiposAcomodacion(List<TiposAcomodacionEntity> tiposAcomodacion) {
-        this.tiposAcomodacion = tiposAcomodacion;
-    }
-
-    public List<EmpresasEntity> getEmpresas() {
-        return empresas;
-    }
-
-    public void setEmpresas(List<EmpresasEntity> empresas) {
-        this.empresas = empresas;
+        SessionFactory sessionLocal = configuration.buildSessionFactory();
+        reservas = sessionLocal.openSession().createQuery("from ReservasEntity ").list();
+        personas = sessionLocal.openSession().createQuery("from PersonasEntity ").list();
+        tiposAcomodacion = sessionLocal.openSession().createQuery("from TiposAcomodacionEntity ").list();
+        empresas = sessionLocal.openSession().createQuery("from EmpresasEntity ").list();
+        sessionLocal.close();
     }
 
     public EmpresasEntity getEmpresaById(int idEmpresa) {
@@ -115,5 +86,82 @@ public class BDManager {
             }
         }
         return null;
+    }
+
+    public ReservasEntity getReservasById(int idReserva) {
+        for (ReservasEntity reserva : reservas) {
+            if (reserva.getIdReserva() == idReserva) {
+                return reserva;
+            }
+        }
+        return null;
+    }
+    public void update(ReservasEntity reserveToUpdate) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.merge(reserveToUpdate);
+            reservas.remove(getReservasById(reserveToUpdate.getIdReserva()));
+            reservas.add(reserveToUpdate);
+            session.getTransaction().commit();
+        }
+    }
+
+    public void save(ReservasEntity entity) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.persist(entity);
+            reservas.add(entity);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int idReserva){
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            ReservasEntity reserva = getReservasById(idReserva);
+            session.remove(reserva);
+            reservas.remove(reserva);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void close() {
+        sessionFactory.close();
+    }
+
+    public List<ReservasEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservasEntity> reservas) {
+        this.reservas = reservas;
+    }
+
+    public List<PersonasEntity> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(List<PersonasEntity> personas) {
+        this.personas = personas;
+    }
+
+    public List<TiposAcomodacionEntity> getTiposAcomodacion() {
+        return tiposAcomodacion;
+    }
+
+    public void setTiposAcomodacion(List<TiposAcomodacionEntity> tiposAcomodacion) {
+        this.tiposAcomodacion = tiposAcomodacion;
+    }
+
+    public List<EmpresasEntity> getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(List<EmpresasEntity> empresas) {
+        this.empresas = empresas;
     }
 }

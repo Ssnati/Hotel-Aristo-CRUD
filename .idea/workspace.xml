@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46f0f81-df85-4e1c-8f1c-a5b1d1866f23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/ReserveFullData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/EditReservationsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/BDManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BDManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/TiposAcomodacionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/TiposAcomodacionEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AddReservationsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddReservationsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EditReservationsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EditReservationsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/PanelReservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddReservationsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +112,7 @@
       <workItem from="1685861202536" duration="137000" />
       <workItem from="1685861629149" duration="2704000" />
       <workItem from="1685864356984" duration="22444000" />
-      <workItem from="1685931047394" duration="2836000" />
+      <workItem from="1685931047394" duration="8995000" />
     </task>
     <servers />
   </component>

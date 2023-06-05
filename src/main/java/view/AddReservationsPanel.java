@@ -2,11 +2,13 @@ package view;
 
 import pojo.EmpresasEntity;
 import pojo.PersonasEntity;
+import pojo.ReserveFullData;
 import pojo.TiposAcomodacionEntity;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -45,6 +47,7 @@ public class AddReservationsPanel extends JPanel {
 
     private void tempEvent() {
         saveButton.addActionListener(actionListener);
+        saveButton.setActionCommand("saveNewReservation");
     }
 
     private void initComponents() {
@@ -236,5 +239,16 @@ public class AddReservationsPanel extends JPanel {
         for (EmpresasEntity empresa : empresas) {
             idEnterpriseComboBox.addItem(empresa.getNombreEmpresa());
         }
+    }
+
+    public ReserveFullData getNewReserve() {
+        ReserveFullData reserveFullData = new ReserveFullData();
+        reserveFullData.setReserveDate(Date.valueOf(reservationDatePickerPanel.getLocalDate()));
+        reserveFullData.setReserveObservations(guestCommentsTextArea.getText());
+        reserveFullData.setGuestName(idGuestComboBox.getSelectedItem().toString());
+        reserveFullData.setReceptionistName(idRecepcionistComboBox.getSelectedItem().toString());
+        reserveFullData.setAcomodateTypeName(idAccomodationTypeComboBox.getSelectedItem().toString().split("<br>")[1].trim());
+        reserveFullData.setBookingCompanyName(idEnterpriseComboBox.getSelectedItem().toString());
+        return reserveFullData;
     }
 }
