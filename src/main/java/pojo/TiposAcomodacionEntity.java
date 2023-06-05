@@ -54,4 +54,13 @@ public class TiposAcomodacionEntity {
     public int hashCode() {
         return Objects.hash(idTipoAcomodacion, nombreTipoAcomodacion, precioAcomodacion);
     }
+
+    @Override
+    public String toString() {
+        return "TiposAcomodacionEntity{" +
+                "idTipoAcomodacion=" + idTipoAcomodacion +
+                ", nombreTipoAcomodacion='" + nombreTipoAcomodacion + '\'' +
+                ", precioAcomodacion=" + precioAcomodacion +
+                '}';
+    }
 }

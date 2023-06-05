@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import pojo.PersonasEntity;
+import pojo.ReservasEntity;
+import pojo.ReserveFullData;
 import pojo.TiposAcomodacionEntity;
 import view.View;
 
@@ -21,10 +23,46 @@ public class Presenter implements ActionListener {
     public Presenter() {
         model = new BDManager();
         view = new View(this);
+        model.loadData();
     }
 
     public void start() {
+        view.loadData(adaptToView(model.getReservas()), model.getPersonas(), model.getTiposAcomodacion(),model.getEmpresas());
         view.setVisible(true);
+    }
+
+    private List<ReserveFullData> adaptToView(List<ReservasEntity> modelReserves) {
+        List<ReserveFullData> reserveFullData = new ArrayList<>();
+        for (ReservasEntity modelReserve : modelReserves) {
+            ReserveFullData reserve = new ReserveFullData();
+            reserve.setIdReserve(modelReserve.getIdReserva());
+            reserve.setReserveDate(modelReserve.getFechaReserva());
+            reserve.setReserveValue(modelReserve.getValorReserva());
+            reserve.setBookingCompanyName(model.getEmpresaById(modelReserve.getIdEmpresa()).getNombreEmpresa());
+            reserve.setGuestName(model.getPersonaById(modelReserve.getIdPersonaHuesped()).getNombrePersona());
+            reserve.setAcomodateTypeName(model.getTipoAcomodacionById(modelReserve.getIdTipoAcomodacion()).getNombreTipoAcomodacion());
+            reserve.setReceptionistName(model.getPersonaById(modelReserve.getIdPersonaRecepcionista()).getNombrePersona());
+            reserve.setReserveObservations(modelReserve.getObservacionesHuespedHotel());
+            reserveFullData.add(reserve);
+        }
+        return reserveFullData;
+    }
+
+    public List<ReservasEntity> adaptToModel(List<ReserveFullData> viewReserves){
+        List<ReservasEntity> reserveFullData = new ArrayList<>();
+        for (ReserveFullData viewReserve : viewReserves) {
+            ReservasEntity reserve = new ReservasEntity();
+            reserve.setIdReserva(viewReserve.getIdReserve());
+            reserve.setFechaReserva(viewReserve.getReserveDate());
+            reserve.setValorReserva(viewReserve.getReserveValue());
+            reserve.setIdEmpresa(model.getEmpresaByName(viewReserve.getBookingCompanyName()).getIdEmpresa());
+            reserve.setIdPersonaHuesped(model.getPersonaByName(viewReserve.getGuestName()).getIdPersona());
+            reserve.setIdTipoAcomodacion(model.getTipoAcomodacionByName(viewReserve.getAcomodateTypeName()).getIdTipoAcomodacion());
+            reserve.setIdPersonaRecepcionista(model.getPersonaByName(viewReserve.getReceptionistName()).getIdPersona());
+            reserve.setObservacionesHuespedHotel(viewReserve.getReserveObservations());
+            reserveFullData.add(reserve);
+        }
+        return reserveFullData;
     }
 
     public void loadConfig() {

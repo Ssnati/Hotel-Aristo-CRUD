@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46f0f81-df85-4e1c-8f1c-a5b1d1866f23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BDManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/DatePickerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/LongTextRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/ReserveFullData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/EditReservationsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/PersonasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/PersonasEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/BDManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BDManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/EmpresasEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/ReservasEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/TiposAcomodacionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/TiposAcomodacionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PanelReservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AddReservationsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,34 +41,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JPA.DatabaseSchemaImportDialog": "edcce05b-b6c8-4a90-b0e9-a979e2df97ca",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "last_directory_selection": "C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/org/example",
-    "last_opened_file_path": "C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/view",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;edcce05b-b6c8-4a90-b0e9-a979e2df97ca&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/org/example&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/view&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="view" />
@@ -116,7 +118,8 @@
       <updated>1685861201534</updated>
       <workItem from="1685861202536" duration="137000" />
       <workItem from="1685861629149" duration="2704000" />
-      <workItem from="1685864356984" duration="17905000" />
+      <workItem from="1685864356984" duration="22444000" />
+      <workItem from="1685931047394" duration="2836000" />
     </task>
     <servers />
   </component>

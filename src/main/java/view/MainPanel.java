@@ -8,9 +8,8 @@ public class MainPanel extends JPanel {
     private final ActionListener actionListener;
     private JTabbedPane tabbedPane;
     private JTabbedPane tabbedPaneReservations;
-    private PanelReservations addPanelReservations;
-    private PanelReservations editPanelReservations;
-    private PanelReservations deletePanelReservations;
+    private AddReservationsPanel addAddReservationsPanel;
+    private EditReservationsPanel editReservationsPanel;
     private PanelReservationsRead showPanelReservations;
 
     public MainPanel(ActionListener actionListener) {
@@ -26,30 +25,27 @@ public class MainPanel extends JPanel {
     }
 
     private void temporalEvents() {
-        tabbedPaneReservations.setBackground(addPanelReservations.getBackground());
+        tabbedPaneReservations.setBackground(addAddReservationsPanel.getBackground());
         tabbedPaneReservations.setForeground(Color.white);
         tabbedPaneReservations.setForegroundAt(tabbedPaneReservations.getSelectedIndex(), Color.black);
         tabbedPaneReservations.addChangeListener(e -> {
-            tabbedPaneReservations.setForegroundAt(0,Color.white);
-            tabbedPaneReservations.setForegroundAt(1,Color.white);
-            tabbedPaneReservations.setForegroundAt(2,Color.white);
-            tabbedPaneReservations.setForegroundAt(3,Color.white);
+            tabbedPaneReservations.setForegroundAt(0, Color.white);
+            tabbedPaneReservations.setForegroundAt(1, Color.white);
+            tabbedPaneReservations.setForegroundAt(2, Color.white);
             tabbedPaneReservations.setForegroundAt(tabbedPaneReservations.getSelectedIndex(), Color.black);
         });
     }
 
     private void initComponents() {
-        addPanelReservations = new PanelReservations();
-        editPanelReservations = new PanelReservations();
-        deletePanelReservations = new PanelReservations();
-        showPanelReservations = new PanelReservationsRead();
+        addAddReservationsPanel = new AddReservationsPanel(actionListener);
+        editReservationsPanel = new EditReservationsPanel(actionListener);
+        showPanelReservations = new PanelReservationsRead(actionListener);
         tabbedPane = new JTabbedPane();
         tabbedPaneReservations = new JTabbedPane(SwingConstants.LEFT);
 
-        tabbedPaneReservations.addTab("R", showPanelReservations);
-        tabbedPaneReservations.addTab("C", addPanelReservations);
-        tabbedPaneReservations.addTab("U", editPanelReservations);
-        tabbedPaneReservations.addTab("D", deletePanelReservations);
+        tabbedPaneReservations.addTab("C", addAddReservationsPanel);
+        tabbedPaneReservations.addTab("R y D", showPanelReservations);
+        tabbedPaneReservations.addTab("U", editReservationsPanel);
         tabbedPane.addTab("Reservas", tabbedPaneReservations);
         add(tabbedPane);
     }
@@ -70,28 +66,20 @@ public class MainPanel extends JPanel {
         this.tabbedPaneReservations = tabbedPaneReservations;
     }
 
-    public PanelReservations getAddPanelReservations() {
-        return addPanelReservations;
+    public AddReservationsPanel getAddPanelReservations() {
+        return addAddReservationsPanel;
     }
 
-    public void setAddPanelReservations(PanelReservations addPanelReservations) {
-        this.addPanelReservations = addPanelReservations;
+    public void setAddPanelReservations(AddReservationsPanel addAddReservationsPanel) {
+        this.addAddReservationsPanel = addAddReservationsPanel;
     }
 
-    public PanelReservations getEditPanelReservations() {
-        return editPanelReservations;
+    public EditReservationsPanel getEditReservationsPanel() {
+        return editReservationsPanel;
     }
 
-    public void setEditPanelReservations(PanelReservations editPanelReservations) {
-        this.editPanelReservations = editPanelReservations;
-    }
-
-    public PanelReservations getDeletePanelReservations() {
-        return deletePanelReservations;
-    }
-
-    public void setDeletePanelReservations(PanelReservations deletePanelReservations) {
-        this.deletePanelReservations = deletePanelReservations;
+    public void setEditReservationsPanel(EditReservationsPanel editReservationsPanel) {
+        this.editReservationsPanel = editReservationsPanel;
     }
 
     public PanelReservationsRead getShowPanelReservations() {

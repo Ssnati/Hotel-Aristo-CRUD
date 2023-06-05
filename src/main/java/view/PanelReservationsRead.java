@@ -1,10 +1,12 @@
 package view;
 
 import pojo.ReservasEntity;
+import pojo.ReserveFullData;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
@@ -19,7 +21,7 @@ public class PanelReservationsRead extends JPanel {
     private JTable reservationsTable;
     private List<ReservasEntity> reservations;
 
-    public PanelReservationsRead() {
+    public PanelReservationsRead(ActionListener actionListener) {
         setLayout(new GridBagLayout());
         setBackground(new Color(61, 41, 110));
         setPreferredSize(new Dimension(1000, 500));
@@ -167,5 +169,21 @@ public class PanelReservationsRead extends JPanel {
         JScrollPane scrollPane = new JScrollPane(reservationsTable);
         scrollPane.setPreferredSize(new Dimension(getPreferredSize().width - 100, 300));
         add(scrollPane, gbc);
+    }
+
+    public void loadData(List<ReserveFullData> reservas) {
+        ((DefaultTableModel) reservationsTable.getModel()).setRowCount(0);
+        for (ReserveFullData reserva : reservas) {
+            ((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[]{
+                    reserva.getIdReserve(),
+                    reserva.getReserveDate(),
+                    reserva.getReserveValue(),
+                    reserva.getBookingCompanyName(),
+                    reserva.getGuestName(),
+                    reserva.getAcomodateTypeName(),
+                    reserva.getReceptionistName(),
+                    reserva.getReserveObservations()
+            });
+        }
     }
 }

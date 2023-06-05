@@ -76,4 +76,15 @@ public class EmpresasEntity {
     public int hashCode() {
         return Objects.hash(idEmpresa, nitEmpresa, nombreEmpresa, telefonoEmpresa, correoEmpresa);
     }
+
+    @Override
+    public String toString() {
+        return "EmpresasEntity{" +
+                "idEmpresa=" + idEmpresa +
+                ", nitEmpresa=" + nitEmpresa +
+                ", nombreEmpresa='" + nombreEmpresa + '\'' +
+                ", telefonoEmpresa='" + telefonoEmpresa + '\'' +
+                ", correoEmpresa='" + correoEmpresa + '\'' +
+                '}';
+    }
 }

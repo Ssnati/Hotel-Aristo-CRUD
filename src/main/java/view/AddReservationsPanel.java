@@ -1,9 +1,21 @@
 package view;
 
+import pojo.EmpresasEntity;
+import pojo.PersonasEntity;
+import pojo.TiposAcomodacionEntity;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.text.Format;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Formatter;
+import java.util.List;
+import java.util.Locale;
 
-public class PanelReservations extends JPanel {
+public class AddReservationsPanel extends JPanel {
+    private final ActionListener actionListener;
     private JLabel reservationDateLabel;
     private JLabel reservationValueLabel;
     private JLabel idEnterpriseLabel;
@@ -12,17 +24,18 @@ public class PanelReservations extends JPanel {
     private JLabel idRecepcionistLabel;
     private JLabel guestCommentsLabel;
     private JTextField reservationValueTextField;
-    private JTextField idEnterpriseTextField;
-    private JTextField idGuestTextField;
-    private JTextField idAccomodationTypeTextField;
-    private JTextField idRecepcionistTextField;
+    private JComboBox<String> idEnterpriseComboBox;
+    private JComboBox<String> idGuestComboBox;
+    private JComboBox<String> idAccomodationTypeComboBox;
+    private JComboBox<String> idRecepcionistComboBox;
     private JTextArea guestCommentsTextArea;
     private DatePickerPanel reservationDatePickerPanel;
     private JButton saveButton;
     private final int COMPONENT_WIDTH = 212;
     private final int COMPONENT_HEIGHT = 35;
 
-    public PanelReservations() {
+    public AddReservationsPanel(ActionListener actionListener) {
+        this.actionListener = actionListener;
         setLayout(new GridBagLayout());
         setBackground(new Color(61, 41, 110));
         setPreferredSize(new Dimension(700, 500));
@@ -31,22 +44,23 @@ public class PanelReservations extends JPanel {
     }
 
     private void tempEvent() {
+        saveButton.addActionListener(actionListener);
     }
 
     private void initComponents() {
         reservationDateLabel = new JLabel("Fecha de la reserva: ");
         reservationValueLabel = new JLabel("Valor de la reserva: ");
-        idEnterpriseLabel = new JLabel("Id de la empresa: ");
-        idGuestLabel = new JLabel("Id del huésped: ");
-        idAccomodationType = new JLabel("Id del tipo de acomodación: ");
-        idRecepcionistLabel = new JLabel("Id del recepcionista: ");
+        idEnterpriseLabel = new JLabel("Empresa a la que se reservo: ");
+        idGuestLabel = new JLabel("Huésped reservado: ");
+        idAccomodationType = new JLabel("Tipo de acomodación: ");
+        idRecepcionistLabel = new JLabel("Recepcionista: ");
         guestCommentsLabel = new JLabel("Comentarios del huésped: ");
         reservationDatePickerPanel = new DatePickerPanel();
         reservationValueTextField = new JTextField();
-        idEnterpriseTextField = new JTextField();
-        idGuestTextField = new JTextField();
-        idAccomodationTypeTextField = new JTextField();
-        idRecepcionistTextField = new JTextField();
+        idEnterpriseComboBox = new JComboBox<>();
+        idGuestComboBox = new JComboBox<>();
+        idAccomodationTypeComboBox = new JComboBox<>();
+        idRecepcionistComboBox = new JComboBox<>();
         guestCommentsTextArea = new JTextArea(5, 20);
         saveButton = new JButton("Guardar");
         addComponents();
@@ -59,13 +73,13 @@ public class PanelReservations extends JPanel {
         addReservationValueLabel();
         addReservationValueTextField();
         addIdEnterpriseLabel();
-        addIdEnterpriseTextField();
+        addIdEnterpriseComboBox();
         addIdGuestLabel();
-        addIdGuestTextField();
+        addIdGuestComboBox();
         addIdAccommodationType();
-        addIdAccommodationTypeTextField();
+        addIdAccommodationTypeComboBox();
         addIdReceptionistLabel();
-        addIdReceptionistTextField();
+        addIdReceptionistComboBox();
         addGuestCommentsLabel();
         addGuestCommentsTextArea();
         addSaveButton();
@@ -108,6 +122,7 @@ public class PanelReservations extends JPanel {
 
     private void addReservationValueTextField() {
         textFieldsProperties(reservationValueTextField);
+        reservationValueTextField.setEnabled(false);
         GridBagConstraints gbc = createConstraints(1, 2, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
         add(reservationValueTextField, gbc);
     }
@@ -118,10 +133,15 @@ public class PanelReservations extends JPanel {
         add(idEnterpriseLabel, gbc);
     }
 
-    public void addIdEnterpriseTextField() {
-        textFieldsProperties(idEnterpriseTextField);
+    public void addIdEnterpriseComboBox() {
+        textFieldsProperties(idEnterpriseComboBox);
         GridBagConstraints gbc = createConstraints(1, 3, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
-        add(idEnterpriseTextField, gbc);
+        add(idEnterpriseComboBox, gbc);
+    }
+
+    private void textFieldsProperties(JComboBox<String> comboBox) {
+        comboBox.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
+        comboBox.setFont(new Font("Arial", Font.PLAIN, 15));
     }
 
     public void addIdGuestLabel() {
@@ -130,10 +150,10 @@ public class PanelReservations extends JPanel {
         add(idGuestLabel, gbc);
     }
 
-    public void addIdGuestTextField() {
-        textFieldsProperties(idGuestTextField);
+    public void addIdGuestComboBox() {
+        textFieldsProperties(idGuestComboBox);
         GridBagConstraints gbc = createConstraints(1, 4, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
-        add(idGuestTextField, gbc);
+        add(idGuestComboBox, gbc);
     }
 
     public void addIdAccommodationType() {
@@ -141,21 +161,25 @@ public class PanelReservations extends JPanel {
         GridBagConstraints gbc = createConstraints(0, 5, 1, GridBagConstraints.EAST, new Insets(5, 0, 5, 0));
         add(idAccomodationType, gbc);
     }
-    public void addIdAccommodationTypeTextField() {
-        textFieldsProperties(idAccomodationTypeTextField);
+
+    public void addIdAccommodationTypeComboBox() {
+        textFieldsProperties(idAccomodationTypeComboBox);
         GridBagConstraints gbc = createConstraints(1, 5, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
-        add(idAccomodationTypeTextField, gbc);
+        add(idAccomodationTypeComboBox, gbc);
     }
+
     public void addIdReceptionistLabel() {
         setLabelProperties(idRecepcionistLabel);
         GridBagConstraints gbc = createConstraints(0, 6, 1, GridBagConstraints.EAST, new Insets(5, 0, 5, 0));
         add(idRecepcionistLabel, gbc);
     }
-    public void addIdReceptionistTextField() {
-        textFieldsProperties(idRecepcionistTextField);
+
+    public void addIdReceptionistComboBox() {
+        textFieldsProperties(idRecepcionistComboBox);
         GridBagConstraints gbc = createConstraints(1, 6, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
-        add(idRecepcionistTextField, gbc);
+        add(idRecepcionistComboBox, gbc);
     }
+
     public void addGuestCommentsLabel() {
         setLabelProperties(guestCommentsLabel);
         GridBagConstraints gbc = createConstraints(0, 7, 1, GridBagConstraints.EAST, new Insets(5, 0, 5, 0));
@@ -164,6 +188,7 @@ public class PanelReservations extends JPanel {
 
     public void addGuestCommentsTextArea() {
         guestCommentsTextArea.setLineWrap(true);
+        guestCommentsTextArea.setWrapStyleWord(true);
         guestCommentsTextArea.setPreferredSize(new Dimension(COMPONENT_WIDTH * 2, COMPONENT_HEIGHT * 5 / 2));
         guestCommentsTextArea.setFont(new Font("Arial", Font.PLAIN, 15));
         GridBagConstraints gbc = createConstraints(1, 7, 1, GridBagConstraints.WEST, new Insets(5, 0, 5, 0));
@@ -192,5 +217,24 @@ public class PanelReservations extends JPanel {
         gbc.anchor = anchor;
         gbc.insets = insets;
         return gbc;
+    }
+
+    public void loadData(List<PersonasEntity> personas, List<TiposAcomodacionEntity> tiposAcomodacion, List<EmpresasEntity> empresas) {
+        idGuestComboBox.removeAllItems();
+        idEnterpriseComboBox.removeAllItems();
+        idAccomodationTypeComboBox.removeAllItems();
+        idRecepcionistComboBox.removeAllItems();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        formatter.setCurrency(Currency.getInstance("COP"));
+        for (PersonasEntity persona : personas) {
+            idGuestComboBox.addItem(persona.getNombrePersona());
+            idRecepcionistComboBox.addItem(persona.getNombrePersona());
+        }
+        for (TiposAcomodacionEntity tipoAcomodacion : tiposAcomodacion) {
+            idAccomodationTypeComboBox.addItem("<html><br>" + tipoAcomodacion.getNombreTipoAcomodacion() + " <br>" + formatter.format(tipoAcomodacion.getPrecioAcomodacion()) + "<br></html>");
+        }
+        for (EmpresasEntity empresa : empresas) {
+            idEnterpriseComboBox.addItem(empresa.getNombreEmpresa());
+        }
     }
 }

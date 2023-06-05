@@ -110,4 +110,18 @@ public class ReservasEntity {
     public int hashCode() {
         return Objects.hash(idReserva, fechaReserva, valorReserva, idEmpresa, idPersonaHuesped, idTipoAcomodacion, idPersonaRecepcionista, observacionesHuespedHotel);
     }
+
+    @Override
+    public String toString() {
+        return "ReservasEntity{" +
+                "idReserva=" + idReserva +
+                ", fechaReserva=" + fechaReserva +
+                ", valorReserva=" + valorReserva +
+                ", idEmpresa=" + idEmpresa +
+                ", idPersonaHuesped=" + idPersonaHuesped +
+                ", idTipoAcomodacion=" + idTipoAcomodacion +
+                ", idPersonaRecepcionista=" + idPersonaRecepcionista +
+                ", observacionesHuespedHotel='" + observacionesHuespedHotel + '\'' +
+                '}';
+    }
 }
