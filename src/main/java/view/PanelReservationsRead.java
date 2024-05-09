@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
 
 
@@ -166,12 +168,14 @@ public class PanelReservationsRead extends JPanel {
     }
 
     public void loadData(List<ReserveFullData> reservas) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        formatter.setCurrency(Currency.getInstance("COP"));
         ((DefaultTableModel) reservationsTable.getModel()).setRowCount(0);
         for (ReserveFullData reserva : reservas) {
             ((DefaultTableModel) reservationsTable.getModel()).addRow(new Object[]{
                     reserva.getIdReserve(),
                     reserva.getReserveDate(),
-                    reserva.getReserveValue(),
+                    formatter.format(reserva.getReserveValue()),
                     reserva.getBookingCompanyName(),
                     reserva.getGuestName(),
                     reserva.getAcomodateTypeName(),

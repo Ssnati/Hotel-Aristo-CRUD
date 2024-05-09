@@ -156,4 +156,11 @@ public class Presenter implements ActionListener, ChangeListener, WindowListener
             case 1, 0 -> view.getMainPanel().getPanelReservationsRead().loadData(adaptToView(model.getReservas()));
         }
     }
+
+    public void reconfigure() {
+        for (ReservasEntity entity:model.getReservas()){
+            entity.setValorReserva(model.getTipoAcomodacionById(entity.getIdTipoAcomodacion()).getPrecioAcomodacion());
+            model.update(entity);
+        }
+    }
 }

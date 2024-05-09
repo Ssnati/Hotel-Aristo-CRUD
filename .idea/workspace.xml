@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d46f0f81-df85-4e1c-8f1c-a5b1d1866f23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7/storage_v2/_src_/schema/pb_hotel_aristo_v1.bKHwhw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a379c889-a96b-4383-8174-bf0d1800f1f7/storage_v2/_src_/schema/pb_hotel_aristo_v1.bKHwhw.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca/storage_v2/_src_/schema/pb_hotel_aristo_v1.bKHwhw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/edcce05b-b6c8-4a90-b0e9-a979e2df97ca/storage_v2/_src_/schema/pb_hotel_aristo_v1.bKHwhw.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/BDManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BDManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presenter/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PanelReservationsRead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2QjJkSKKICUe7m0kgvSXZguY9oz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -48,7 +49,7 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/org/example&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/Intellj Project/5 Semestre/Proyecto Bases/Copia-proyecto/src/main/java/view&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/NetBeansProjects/3 Semestre (Progra 1)/NavalBattle&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -116,7 +117,17 @@
       <workItem from="1685861202536" duration="137000" />
       <workItem from="1685861629149" duration="2704000" />
       <workItem from="1685864356984" duration="22444000" />
-      <workItem from="1685931047394" duration="12698000" />
+      <workItem from="1685931047394" duration="14657000" />
+      <workItem from="1685977538932" duration="2080000" />
+      <workItem from="1685983586146" duration="658000" />
+      <workItem from="1686080258365" duration="551000" />
+      <workItem from="1691762477540" duration="127000" />
+      <workItem from="1692479965752" duration="1002000" />
+      <workItem from="1692932286772" duration="315000" />
+      <workItem from="1692932700895" duration="18000" />
+      <workItem from="1697558279373" duration="557000" />
+      <workItem from="1697747798021" duration="931000" />
+      <workItem from="1698119266563" duration="62000" />
     </task>
     <servers />
   </component>

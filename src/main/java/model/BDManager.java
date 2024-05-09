@@ -101,8 +101,8 @@ public class BDManager {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             session.merge(reserveToUpdate);
-            reservas.remove(getReservasById(reserveToUpdate.getIdReserva()));
-            reservas.add(reserveToUpdate);
+            int index = reservas.indexOf(getReservasById(reserveToUpdate.getIdReserva()));
+            reservas.set(index, reserveToUpdate);
             session.getTransaction().commit();
         }
     }
